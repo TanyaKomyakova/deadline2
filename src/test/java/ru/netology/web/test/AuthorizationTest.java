@@ -9,6 +9,7 @@ import org.junit.jupiter.api.AfterAll;
 import org.junit.jupiter.api.BeforeEach;
 import org.junit.jupiter.api.Test;
 import ru.netology.web.data.DataHelper;
+import ru.netology.web.info.SQLHelper;
 import ru.netology.web.page.LoginPage;
 
 import java.sql.DriverManager;
@@ -16,8 +17,10 @@ import java.sql.SQLException;
 
 import static com.codeborne.selenide.Selenide.$;
 import static com.codeborne.selenide.Selenide.open;
+import static org.junit.jupiter.api.Assertions.assertEquals;
 
 public class AuthorizationTest {
+
 
     @Test
     void logIn(){
@@ -25,7 +28,11 @@ public class AuthorizationTest {
         val loginPage = new LoginPage();
         val authInfo = DataHelper.getAuthInfo();
         val verificationPage = loginPage.validLogin(authInfo);
-        val verificationCode = ;
+        val personalArea = verificationPage.validVerify(SQLHelper.getCode());
+
+        assertEquals(personalArea,personalArea);
+
+
 
     }
 

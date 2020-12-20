@@ -2,7 +2,7 @@ package ru.netology.web.page;
 
 import com.codeborne.selenide.SelenideElement;
 import ru.netology.web.data.DataHelper;
-import ru.netology.web.info.ToGetTheCode;
+import ru.netology.web.info.SQLHelper;
 
 import static com.codeborne.selenide.Selenide.$;
 
@@ -11,11 +11,12 @@ public class LoginPage {
     private SelenideElement passwordField = $("[data-test-id=password] input");
     private SelenideElement loginButton = $("[data-test-id=action-login]");
 
-    public ToGetTheCode validLogin(DataHelper.AuthInfo info){
+
+    public VerificationPage validLogin(DataHelper.AuthInfo info){
         loginField.setValue(info.getLogin());
         passwordField.setValue(info.getPassword());
         loginButton.click();
-        return new ToGetTheCode();
+        return new VerificationPage();
     }
 
 }
