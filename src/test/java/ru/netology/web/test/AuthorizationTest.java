@@ -15,8 +15,7 @@ import ru.netology.web.page.LoginPage;
 import java.sql.DriverManager;
 import java.sql.SQLException;
 
-import static com.codeborne.selenide.Selenide.$;
-import static com.codeborne.selenide.Selenide.open;
+import static com.codeborne.selenide.Selenide.*;
 import static org.junit.jupiter.api.Assertions.assertEquals;
 
 public class AuthorizationTest {
@@ -30,11 +29,11 @@ public class AuthorizationTest {
         val verificationPage = loginPage.validLogin(authInfo);
         val personalArea = verificationPage.validVerify(SQLHelper.getCode());
 
-        assertEquals(personalArea,personalArea);
-
-
-
     }
 
+    @AfterAll
+    public static void afterAll() {
+        SQLHelper.clear();
+    }
 
 }

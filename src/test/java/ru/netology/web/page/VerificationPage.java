@@ -16,9 +16,8 @@ public class VerificationPage {
     }
 
     public PersonalArea validVerify(String code){
-        codeField.setValue(SQLHelper.getCode());
+        codeField.setValue(code);
         verifyButton.click();
         return new PersonalArea();
     }
-
 }
