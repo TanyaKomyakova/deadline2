@@ -24,7 +24,7 @@ public class LoginPage {
 
     public VerificationPage invalidLoginLogin() {
         loginField.setValue("vasya");
-        passwordField.setValue("qwerty12345");
+        passwordField.setValue("qwerty121345");
         loginButton.click();
         passwordField.doubleClick().sendKeys(Keys.BACK_SPACE);
         passwordField.setValue("qty12345");
