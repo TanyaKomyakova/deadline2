@@ -5,7 +5,10 @@ import lombok.Value;
 public class DataHelper {
 
 
-    private DataHelper(){}
+    private DataHelper(){
+
+    }
+
 
     @Value
     public static class AuthInfo{
@@ -17,6 +20,14 @@ public class DataHelper {
         return new AuthInfo("vasya","qwerty123");
     }
 
+    @Value
+    public static class AuthInvalidInfo {
+        private String login;
+        private String invalidPassword;
 
+    }
 
+    public static AuthInvalidInfo getAuthInvalidInfo(){
+        return new AuthInvalidInfo("vasya","qwerty");
+    }
 }
