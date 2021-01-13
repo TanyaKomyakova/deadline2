@@ -20,30 +20,33 @@ public class LoginPage {
     private SelenideElement errorMessage = $("[data-test-id=error-notification]");
 
 
-    public VerificationPage validLogin(DataHelper.AuthInfo info){
-        loginField.setValue(info.getLogin());
-        passwordField.setValue(info.getPassword());
-        loginButton.click();
+    public VerificationPage validLogin(DataHelper.AuthInfo loginInfo){
+        login(loginInfo);
         return new VerificationPage();
     }
 
-    public LoginPage invalidLogin(DataHelper.AuthInvalidInfo invalidInfo) {
-        loginField.setValue(invalidInfo.getLogin());
-        passwordField.setValue(invalidInfo.getInvalidPassword());
+    public void login(DataHelper.AuthInfo loginInfo) {
+        loginField.setValue(loginInfo.getLogin());
+        passwordField.setValue(loginInfo.getPassword());
         loginButton.click();
-        return new LoginPage();
+
+    }
+
+    public void getBadLoginOrPasswordMessage(){
+        errorMessage.shouldBe(visible).shouldHave(text(" Ошибка Ошибка! Неверно указан логин или пароль"));
+
+    }
+
+    public void getBlockedSystemMessage() {
+        errorMessage.shouldBe(visible).shouldHave(text("Система заблокирована"));
     }
 
 
-    public LoginPage cleaning (){
+
+    public void cleaning (){
         loginField.doubleClick().sendKeys(Keys.BACK_SPACE);
         passwordField.doubleClick().sendKeys(Keys.BACK_SPACE);
-        return new LoginPage();
-    }
 
-    public LoginPage message () {
-        errorMessage.shouldBe(visible).shouldHave(text(" Ошибка Ошибка! Неверно указан логин или пароль"));
-        return new LoginPage();
     }
 
 

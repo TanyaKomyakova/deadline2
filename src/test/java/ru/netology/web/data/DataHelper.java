@@ -20,14 +20,7 @@ public class DataHelper {
         return new AuthInfo("vasya","qwerty123");
     }
 
-    @Value
-    public static class AuthInvalidInfo {
-        private String login;
-        private String invalidPassword;
-
-    }
-
-    public static AuthInvalidInfo getAuthInvalidInfo(){
-        return new AuthInvalidInfo("vasya","qwerty");
+    public static AuthInfo getAuthInvalidInfo(){
+        return new AuthInfo("vasya","qwerty");
     }
 }
